@@ -15,10 +15,8 @@ function validation(users) {
 
     while (users == "" || users == null) {
 
-        if (users == "" || users == null) {
-            users = prompt("Añada el jugador número " + i + " de forma correcta");
-        }
-
+        users = prompt("Añada el jugador número " + i + " de forma correcta");
+        
         if (users != "" && users != null) {
             break;
         }
