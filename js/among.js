@@ -10,40 +10,32 @@ Hacer un programa, funcionalidad de among us:
 -Si gana o pierde, lanzar una alerta
 */
 
-//users
-    var user = prompt("Añada su primer jugador");
-    var user2 = prompt("Añada su segundo jugador");
-    var user3 = prompt("Añada su tercer jugador");
-    var user4 = prompt("Añada su cuarto jugador");
-    var user5 = prompt("Añada su quinto jugador");
 
+    function validation(users){
 
-    while(user == "" || user == null || user2 == "" || user2 == null || 
-    user3 == "" || user3 == null || user4 == "" || user4 == null || user5 == "" || user5 == null){
+    while(users == "" || users == null){
         
-        if(user == "" || user == null){
-            user = prompt("Añada su primer jugador de forma correcta");
-        }
-        if(user2 == "" || user2 == null){
-            user2 = prompt("Añada su segundo jugador de forma correcta");
-        }
-        if(user3 == "" || user3 == null){
-            user3 = prompt("Añada su tercer jugador de forma correcta");
-        }
-        if(user4 == "" || user4 == null){
-            user4 = prompt("Añada su cuarto jugador de forma correcta");
-        }
-        if(user5 == "" || user5 == null){
-            user5 = prompt("Añada su quinto jugador de forma correcta");
+        if(users == "" || users == null){
+            users = prompt("Añada el jugador número " + i + " de forma correcta");
         }
 
-        if(user != "" && user != null && user2 != "" && user2 != null  
-        && user3 != "" && user3 != null  && user4 != "" && user4 != null && user5 != "" && user5 != null ){
+        if(users != "" && users != null){
             break;
         }
     }
+    }
 
-    var users_array = [user, user2, user3, user4, user5];
+    //Pedir jugadores
+        var users_array = new Array(6);
+
+        for(var i = 0; i < 6; i++){
+            users_array[i] = prompt("Introduce el jugador número " + i);
+            validation(users_array[i]);
+        }
+
+
+
+
     
     document.write("<h1>Jugadores:</h1>");
     document.write("<ul>");
