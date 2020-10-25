@@ -15,22 +15,23 @@ function validation(users) {
 
     while (users == "" || users == null) {
 
-        users = prompt("Añada el jugador número " + i + " de forma correcta");
+        users_array[i] = prompt("Añada el jugador número " + i + " de forma correcta");
         
-        if (users != "" && users != null) {
+        if (users_array[i] != "" && users_array[i] != null) {
             break;
         }
     }
 }
 
 //Pedir jugadores
-var users_array = new Array(6);
+var users_array = new Array(5);
 
-for (var i = 0; i < 6; i++) {
+for (var i = 0; i < 5; i++) {
     users_array[i] = prompt("Introduce el jugador número " + i);
     validation(users_array[i]);
 }
 
+console.log(users_array);
 
 
 
