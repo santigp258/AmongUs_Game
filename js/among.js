@@ -16,7 +16,7 @@ function validation(users) {
     while (users == "" || users == null) {
 
         users_array[i] = prompt("Añada el jugador número " + i + " de forma correcta");
-        
+
         if (users_array[i] != "" && users_array[i] != null) {
             break;
         }
@@ -31,10 +31,7 @@ for (var i = 0; i < 5; i++) {
     validation(users_array[i]);
 }
 
-console.log(users_array);
-
-
-
+console
 
 document.write("<h1>Jugadores:</h1>");
 document.write("<ul>");
@@ -52,10 +49,10 @@ const impostor = users_array[num];
 
 setTimeout(() => {
 
-    var peticion = prompt("¿Quién crees que es el impostor? Selecciona un numero del 0 al 4");
+    var peticion = prompt("¿Quién crees que es el impostor?");
     while (peticion == "" || peticion == null) {
         if (peticion == "" || peticion == null) {
-            peticion = parseInt(prompt("Di quién es el impostor de forma correcta"));
+            peticion = prompt("Di quién es el impostor de forma correcta");
         }
 
         if (peticion != "" && peticion != null) {
@@ -78,6 +75,8 @@ setTimeout(() => {
 
             }
             var search = users_array.find(user => user == index3);
+            console.log("search " + search);
+            /* var resultIndex = users_array.indexOf(users_array[]); */ //puede servir
             /* var search_index = lenguages.findIndex(lenguage=> lenguage == "JS"); */
 
             users_array.splice(index3, 1);
