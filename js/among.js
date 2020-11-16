@@ -13,9 +13,7 @@ Hacer un programa, funcionalidad de among us:
 //users validation
 function validation(users) {
   while (users == "" || users == null) {
-    users_array[i] = prompt(
-      "Añada el jugador número " + (i + 1) + " de forma correcta"
-    );
+    users_array[i] = prompt(`Enter nickname player ${i + 1} correctly`);
 
     if (users_array[i] != "" && users_array[i] != null) {
       break;
@@ -27,7 +25,7 @@ function validation(users) {
 var users_array = new Array(5);
 
 for (var i = 0; i < 5; i++) {
-  users_array[i] = prompt("Introduce el jugador número " + (i + 1));
+  users_array[i] = prompt(`Enter nickname for player ${i + 1}`);
   validation(users_array[i]);
 }
 
@@ -51,33 +49,48 @@ console.log(impostor);
 //Inicio siguientes puntos
 
 setTimeout(() => {
-  var peticion = prompt("¿Quién crees que es el impostor?");
-  while (peticion == "" || peticion == null) {
-    if (peticion == "" || peticion == null) {
-      peticion = prompt("Di quién es el impostor de forma correcta");
-    }
+  var find_impostor = prompt("¿Quién crees que es el impostor?");
 
-    if (peticion != "" && peticion != null) {
-      break;
+  function validate(peticion) {
+    while (
+      peticion == "" ||
+      peticion == null ||
+      !users_array.includes(peticion)
+    ) {
+      if (peticion == "" || peticion == null) {
+        peticion = prompt("Di quién es el impostor de forma correcta");
+      }
+
+      if (!users_array.includes(peticion)) {
+        result = prompt(`Player '${peticion}' no exists, try again!`);
+      } else {
+        result = peticion;
+        return result;
+      }
+
+      if (peticion != "" && peticion != null) {
+        break;
+      }
     }
   }
+  validate(find_impostor);
 
-  var index = users_array.indexOf(users_array[peticion]); //capturo la eleccion por indice
-  var index2 = users_array.join(); //convierto a string el array de jugadores
-  var index3 = index2.match(users_array[peticion]); //identifico la eleccion del jugador por indice
+  var arraytoString = users_array.join(); //convierto a string el array de jugadores
+  var result = arraytoString.match(find_impostor);
+  console.log(result);
+  if (result == null) {
+    validate(result);
+  }
+
+
+  console.log(result);
+
+  console.log("-------")
+  console.log(find_impostor); //identifico la eleccion del jugador por indice
+
   //var election_index3 = index3;
-
-  /* console.log(users_array[peticion]) */
-  while (index > -1) {
-    if (index > -1) {
-      if (index == num) {
-        alert(impostor + " es el impostor");
-        alert("Has ganado");
-        break;
-      } //puede servir
-      /*  var search = users_array.find(user => user == index3);
-            console.log("search " + search);
-            /* var resultIndex = users_array.indexOf(users_array[]); */ /* var search_index = lenguages.findIndex(lenguage=> lenguage == "JS"); */
+}, 3000); /* var search_index = lenguages.findIndex(lenguage=> lenguage == "JS"); 
+   
       users_array.splice(index, 1, "");
       console.log(users_array);
     }
@@ -88,7 +101,7 @@ setTimeout(() => {
       div_impostor.innerHTML = `<h1>Quedan ${users_array.length} jugadores:</h1><ul>`;
 
       users_array.forEach((element, index, array) => {
-        div_players.innerHTML = `<li> ${index + 1} ${element} "</li>  </ul>`;
+        div_players.innerHTML = `<li> ${index + 1} ${element} </li>  </ul>`;
       });
 
       peticion = prompt("Intenta de nuevo encontrar al impostor");
@@ -108,4 +121,17 @@ setTimeout(() => {
     }
     console.log(index);
   }
-}, 3000);
+}, 3000); */
+/* console.log(users_array[peticion]) */
+/* while (!index.includes()) {
+    if (index > -1) {
+      if (index == num) {
+        alert(impostor + " es el impostor");
+        alert("Has ganado"); //else if(!index.includes(peticion)){
+        `Player ${peticion} no exists, try again!`
+      }
+        break;
+      } //puede servir
+       var search = users_array.find(user => user == index3);
+            console.log("search " + search);
+            var resultIndex = users_array.indexOf(users_array[]); */
