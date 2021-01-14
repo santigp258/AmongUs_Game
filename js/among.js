@@ -31,7 +31,6 @@ for (var i = 0; i < 5; i++) {
     validation(users_array[i]);
 }
 
-console
 
 document.write("<h1>Jugadores:</h1>");
 document.write("<ul>");
