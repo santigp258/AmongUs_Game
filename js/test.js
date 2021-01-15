@@ -20,22 +20,22 @@ function validation(users_consult, i) {
     }
   }
 }
+
 function showUsers() {
   document.write("<h4>Players:</h4><ul>");
 
   users_array.forEach((element, index) => {
-    document.write(`<li>${index + 1} - ${element.name} </li>`);
+    document.write(`<li>${element.id} - ${element.name} </li>`);
   });
 
   document.write("</ul>");
 }
 
+//Expressions validate
 const expresions = {
   users: /^[A-Za-z0-9_]{1,20}$/,
   find_impostor: /^[1-5]{1}$/,
 };
-
-
 //array players
 let users_array = [];
 
@@ -52,14 +52,14 @@ for (let i = 0; i < 5; i++) {
 
 //show players
 showUsers();
+console.log(users_array);
 
 //define impostor
 let num = Math.floor(Math.random() * 4 + 1); //generate random number from 1 to 5
 
-const impostor = users_array[num].id;
-
-console.log(impostor);
-//find impostor
+const id_impostor = users_array[num].id;
+console.log(id_impostor);
+//console.log(impostor);
 setTimeout(() => {
   let find_impostor = parseInt(prompt("Who is the impostor?"));
   while (!expresions.find_impostor.test(find_impostor)) {
@@ -70,9 +70,19 @@ setTimeout(() => {
       break;
     }
   }
+  const found = users_array.find((element) => element.id == find_impostor); //separate element selected for user
+  const impostor = users_array.find((element) => element.id == id_impostor); //object impostor
 
-  
+  const indexElement = (element) => element == found; //find element index selected for user
+  let index = users_array.findIndex(indexElement);
+  console.log(found);
+  if(found.id !== id_impostor){
+    users_array.splice(index, 1);
+    showUsers();
+}
+  //let index = users_array.indexOf(found);
+  // console.log(index);
   /*   console.log(typeof find_impostor);
-  console.log(find_impostor);
-  console.log(users_array.length); */
+    console.log(find_impostor);
+    console.log(users_array.length); */
 }, 4000);
