@@ -61,28 +61,23 @@ const id_impostor = users_array[num].id;
 console.log(id_impostor);
 //console.log(impostor);
 setTimeout(() => {
-  let find_impostor = parseInt(prompt("Who is the impostor?"));
-  while (!expresions.find_impostor.test(find_impostor)) {
-    find_impostor = parseInt(
-      prompt("Say who the impostor is. Choose numbers from 1 to 5")
-    );
-    if (expresions.find_impostor.test(find_impostor)) {
-      break;
+  while(users_array.length >= 1){
+    let data_impostor = parseInt(prompt("Who is the impostor?"));
+    let found = users_array.find((element) => element.id == data_impostor); //separate element selected for user
+    const impostor = users_array.find((element) => element.id == id_impostor); //object impostor
+    if(impostor === found){
+      if(impostor.name != undefined){
+           alert(`${impostor.name} es el impostor`);
+      }
+    }else if(found == undefined){
+      alert('ya has selecionado a este player')
     }
-  }
-  const found = users_array.find((element) => element.id == find_impostor); //separate element selected for user
-  const impostor = users_array.find((element) => element.id == id_impostor); //object impostor
 
-  const indexElement = (element) => element == found; //find element index selected for user
-  let index = users_array.findIndex(indexElement);
-  console.log(found);
-  if(found.id !== id_impostor){
+    const indexElement = (element) => element == found; //find element index selected for user
+    let index = users_array.findIndex(indexElement);
     users_array.splice(index, 1);
     showUsers();
-}
-  //let index = users_array.indexOf(found);
-  // console.log(index);
-  /*   console.log(typeof find_impostor);
-    console.log(find_impostor);
-    console.log(users_array.length); */
+  }
+
+  /*   !expresions.find_impostor.test(data_impostor */
 }, 4000);
